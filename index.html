@@ -1,9 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<!-- add css sheet -->
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<title>FCC Pomodoro Clock</title>
 </head>
 <body>
+<div class='title'><h1>Free Code Camp</h1>
+<h1>Pomodoro Clock</h1></div>
+	<div class='timerLable'>
+		<div></div>
+		<div></div>
+		<div id='breakTimeLable'>Break Time</div>
+		<div id='workTimeLable'>Work Time</div>
+		<div></div>
+		<div></div>
+	</div>
+	
+	<div class='timerTimes'>
+		<div></div>
+		<div></div>
+		<div id='breakTime'><button id='minusBreak' value='minusBreak'>- </button> <div id='breakTime1'> 5 </div><button id='plusBreak' value='plusBreak'> +</button></div>
+		<div id='workTime'><button id='minusWork' value='minusWork'>- </button><div id='workTime1'> 25</div> <button id='plusWork' value='plusWork'> +</button></div>
+		<div></div>
+		<div></div>
+	</div>
 
+	<div class='countDown'>
+		<div></div>
+		<div id='graphic'>
+			<div id='countDown'>25</div>
+		</div>
+		<div></div>
+	</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="script.js"></script>
 </body>
 </html>

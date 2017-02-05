@@ -54,12 +54,14 @@ $(document).ready(function(){
 						//switch to break time
 						if(work===true){
 							work=false;
+							document.getElementById("graphic").style.backgroundColor = "red";
 							$('#countDown').html('Break');
 							clearInterval(timeinterval);
 							var deadline = new Date(Date.parse(new Date())+ breakTime * 60 * 1000);
 							initializeClock('countDown1',deadline);
 						}else{
 							work=true;
+							document.getElementById("graphic").style.backgroundColor = "green";
 							$('#countDown').html('Work');
 							clearInterval(timeinterval);
 							var deadline = new Date(Date.parse(new Date())+ workTime * 60 * 1000);
@@ -74,6 +76,7 @@ $(document).ready(function(){
 
 			//var timer= $('.minutes').html();
 			work=true;
+			document.getElementById("graphic").style.backgroundColor = "green";
 			$('#countDown').html('Work');
 			var deadline = new Date(Date.parse(new Date())+ workTime * 60 * 1000);
 			initializeClock('countDown1',deadline);

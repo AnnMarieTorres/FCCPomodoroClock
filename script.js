@@ -1,12 +1,14 @@
 var breakTime=5;
 var workTime=25;
-var timer;
+var work=false;
+
 $(document).ready(function(){
 	$('button').click(function(){
 		console.log($(this).attr('value'));
 		if($(this).attr("value") === 'minusBreak'){
 			breakTime=breakTime-1;
 			$('#breakTime1').html(breakTime);
+
 		}else if($(this).attr("value")==='plusBreak'){
 			breakTime=breakTime+1;
 			$('#breakTime1').html(breakTime);
@@ -42,14 +44,28 @@ $(document).ready(function(){
 				var secondsSpan = clock.querySelector('#seconds');
 
 				function updateClock(){
-				
+					
 					var t = getTimeRemaining(endtime);
+					
+					$('#countDown1').html(('0'+t.minutes).slice(-2)+":"+('0'+t.seconds).slice(-2));
 				
-					$('#countDown1').html(t.minutes+":"+t.seconds);
 
 					if (t.total<=0){
 						//switch to break time
-						clearInterval(timeinterval);
+						if(work===true){
+							work=false;
+							$('#countDown').html('Break');
+							clearInterval(timeinterval);
+							var deadline = new Date(Date.parse(new Date())+ breakTime * 60 * 1000);
+							initializeClock('countDown1',deadline);
+						}else{
+							work=true;
+							$('#countDown').html('Work');
+							clearInterval(timeinterval);
+							var deadline = new Date(Date.parse(new Date())+ workTime * 60 * 1000);
+							initializeClock('countDown1',deadline);
+						}
+						
 					}
 				}
 				updateClock();
@@ -57,7 +73,9 @@ $(document).ready(function(){
 			}
 
 			//var timer= $('.minutes').html();
-			var deadline = new Date(Date.parse(new Date())+ timer * 60 * 1000);
+			work=true;
+			$('#countDown').html('Work');
+			var deadline = new Date(Date.parse(new Date())+ workTime * 60 * 1000);
 			initializeClock('countDown1',deadline);
 		}
 	});
